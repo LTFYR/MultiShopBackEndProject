@@ -254,6 +254,9 @@ namespace MultiShopBackEndProject.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<int>("CategoryId")
+                        .HasColumnType("int");
+
                     b.Property<int>("ClotheDescriptionId")
                         .HasColumnType("int");
 
@@ -274,33 +277,13 @@ namespace MultiShopBackEndProject.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("CategoryId");
+
                     b.HasIndex("ClotheDescriptionId");
 
                     b.HasIndex("ClotheInformationId");
 
                     b.ToTable("Clothes");
-                });
-
-            modelBuilder.Entity("MultiShopBackEndProject.Models.ClotheCategory", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("CategoryId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("ClotheId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("CategoryId");
-
-                    b.HasIndex("ClotheId");
-
-                    b.ToTable("ClotheCategories");
                 });
 
             modelBuilder.Entity("MultiShopBackEndProject.Models.ClotheDescription", b =>
@@ -505,6 +488,12 @@ namespace MultiShopBackEndProject.Migrations
 
             modelBuilder.Entity("MultiShopBackEndProject.Models.Clothe", b =>
                 {
+                    b.HasOne("MultiShopBackEndProject.Models.Category", "Category")
+                        .WithMany()
+                        .HasForeignKey("CategoryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("MultiShopBackEndProject.Models.ClotheDescription", "ClotheDescription")
                         .WithMany("Clothes")
                         .HasForeignKey("ClotheDescriptionId")
@@ -514,21 +503,6 @@ namespace MultiShopBackEndProject.Migrations
                     b.HasOne("MultiShopBackEndProject.Models.ClotheInformation", "ClotheInformation")
                         .WithMany("Clothes")
                         .HasForeignKey("ClotheInformationId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("MultiShopBackEndProject.Models.ClotheCategory", b =>
-                {
-                    b.HasOne("MultiShopBackEndProject.Models.Category", "Category")
-                        .WithMany()
-                        .HasForeignKey("CategoryId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("MultiShopBackEndProject.Models.Clothe", "Clothe")
-                        .WithMany("ClotheCategories")
-                        .HasForeignKey("ClotheId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

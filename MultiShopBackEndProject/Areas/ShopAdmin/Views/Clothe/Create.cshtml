@@ -1,0 +1,65 @@
+﻿@using MultiShopBackEndProject.Models
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@addTagHelper *, AuthoringTagHelpers
+@model Clothe
+@{
+    List<Category> cate = ViewBag.Category;
+    List<ClotheInformation> info = ViewBag.ClotheInformation;
+    List<ClotheDescription> desc = ViewBag.ClotheDescription;
+}
+@{
+    ViewData["Title"] = "CreateClothe";
+}
+
+
+<div class="main-panel">
+    <h2 style="font-size:20px" class="text-center btn btn-secondary">Create a new clothe</h2>
+    @if(TempData["Filname"] != null)
+    {
+        <div class="alert alert-danger">@TempData["Filename"]</div>
+    }
+    <div class="alert alert-danger" asp-validation-summary="ModelOnly"></div>
+    <form class="mt-3" method="post" enctype="multipart/form-data">
+    <div>
+        <label>Add a clothe:</label><br/>
+        <input asp-for="Name"  class="form-control" /><br />
+        <span class="text-danger" asp-validation-for="Name"></span>       
+    </div>
+    <div>
+        <label>Add main image:</label><br/>
+        <input asp-for="Main"  class="form-control" /><br />
+        <span class="text-danger" asp-validation-for="Main"></span>       
+    </div>
+    <div>
+        <label>Add an image:</label><br/>
+        <input asp-for="Photos"  class="form-control" /><br />
+        <span class="text-danger" asp-validation-for="Photos"></span>       
+    </div>
+    <div>
+        <label>Add a description:</label><br/>
+        <input asp-for="Description"  class="form-control" /><br />
+        <span class="text-danger" asp-validation-for="Description"></span>       
+    </div>
+    <div>
+        <label>Add a price:</label><br/>
+        <input asp-for="Price"  class="form-control" /><br />
+        <span class="text-danger" asp-validation-for="Price"></span>       
+    </div>
+    <div>
+        <label>Add a category:</label><br/>
+        <select asp-for="CategoryId" asp-items="@(new SelectList(cate, "Id", "Name"))" ></select>      
+    </div>
+    <div>
+        <label>Add a information:</label><br/>
+        <select asp-for="ClotheInformationId" asp-items="@(new SelectList(info, "Id", "Information"))" ></select>      
+    </div>
+    <div>
+        <label>Add description:</label><br/>
+        <select asp-for="ClotheDescriptionId" asp-items="@(new SelectList(desc, "Id", "Description"))" ></select>      
+    </div>
+    <div class="mt-2">
+        <button style="color:green" class="btn btn-primary" type="submit">Create</button>
+    </div>
+</form>
+</div>
+

@@ -31,7 +31,6 @@ namespace MultiShopBackEndProject.DAL
         public DbSet<Setting> Settings { get; set; }
         public DbSet<Clothe> Clothes { get; set; }
         public DbSet<Category> Categories { get; set; }
-        public DbSet<ClotheCategory> ClotheCategories { get; set; }
         public DbSet<ClotheDescription> ClotheDescriptions { get; set; }
         public DbSet<ClotheImage> ClotheImages { get; set; }
         public DbSet<ClotheInformation> ClotheInformation { get; set; }

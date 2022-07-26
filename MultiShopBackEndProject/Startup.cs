@@ -34,6 +34,7 @@ namespace MultiShopBackEndProject
             {
                 options.UseSqlServer(_configuration.GetConnectionString("Secure"));
             });
+            
             services.AddIdentity<AppUser,IdentityRole>(option =>
             {
                 option.User.RequireUniqueEmail = false;
@@ -50,7 +51,7 @@ namespace MultiShopBackEndProject
                 option.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(5);
                 option.Lockout.AllowedForNewUsers = true;
             }).AddDefaultTokenProviders().AddEntityFrameworkStores<AppDbContext>();
-
+            services.AddHttpContextAccessor();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

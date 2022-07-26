@@ -151,4 +151,16 @@ C:\Users\ASUS\source\repos\MultiShopBackEndProject\MultiShopBackEndProject\obj\D
 C:\Users\ASUS\source\repos\MultiShopBackEndProject\MultiShopBackEndProject\obj\Debug\netcoreapp3.1\Razor\Views\Clothe\ClotheDetail.cshtml.g.cs
 C:\Users\ASUS\source\repos\MultiShopBackEndProject\MultiShopBackEndProject\obj\Debug\netcoreapp3.1\Razor\Views\Account\Register.cshtml.g.cs
 C:\Users\ASUS\source\repos\MultiShopBackEndProject\MultiShopBackEndProject\obj\Debug\netcoreapp3.1\Razor\Views\Account\Login.cshtml.g.cs
-C:\Users\ASUS\source\repos\MultiShopBackEndProject\MultiShopBackEndProject\obj\Debug\netcoreapp3.1\Razor\Views\Clothe\_ClothePartialView.cshtml.g.cs
+C:\Users\ASUS\source\repos\MultiShopBackEndProject\MultiShopBackEndProject\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_ClothePartialView.cshtml.g.cs
+C:\Users\ASUS\source\repos\MultiShopBackEndProject\MultiShopBackEndProject\obj\Debug\netcoreapp3.1\Razor\Areas\ShopAdmin\Views\Shared\_Layout.cshtml.g.cs
+C:\Users\ASUS\source\repos\MultiShopBackEndProject\MultiShopBackEndProject\obj\Debug\netcoreapp3.1\Razor\Areas\ShopAdmin\Views\_ViewStart.cshtml.g.cs
+C:\Users\ASUS\source\repos\MultiShopBackEndProject\MultiShopBackEndProject\obj\Debug\netcoreapp3.1\Razor\Areas\ShopAdmin\Views\Dashboard\Index.cshtml.g.cs
+C:\Users\ASUS\source\repos\MultiShopBackEndProject\MultiShopBackEndProject\obj\Debug\netcoreapp3.1\Razor\Areas\ShopAdmin\Views\Clothe\Index.cshtml.g.cs
+C:\Users\ASUS\source\repos\MultiShopBackEndProject\MultiShopBackEndProject\obj\Debug\netcoreapp3.1\Razor\Areas\ShopAdmin\Views\Clothe\Create.cshtml.g.cs
+C:\Users\ASUS\source\repos\MultiShopBackEndProject\MultiShopBackEndProject\obj\Debug\netcoreapp3.1\Razor\Areas\_ViewImports.cshtml.g.cs
+C:\Users\ASUS\source\repos\MultiShopBackEndProject\MultiShopBackEndProject\obj\Debug\netcoreapp3.1\Razor\Areas\ShopAdmin\Views\Slider\Index.cshtml.g.cs
+C:\Users\ASUS\source\repos\MultiShopBackEndProject\MultiShopBackEndProject\obj\Debug\netcoreapp3.1\Razor\Areas\ShopAdmin\Views\Slider\Create.cshtml.g.cs
+C:\Users\ASUS\source\repos\MultiShopBackEndProject\MultiShopBackEndProject\obj\Debug\netcoreapp3.1\Razor\Areas\ShopAdmin\Views\Slider\Edit.cshtml.g.cs
+C:\Users\ASUS\source\repos\MultiShopBackEndProject\MultiShopBackEndProject\obj\Debug\netcoreapp3.1\Razor\Areas\ShopAdmin\Views\Category\Index.cshtml.g.cs
+C:\Users\ASUS\source\repos\MultiShopBackEndProject\MultiShopBackEndProject\obj\Debug\netcoreapp3.1\Razor\Areas\ShopAdmin\Views\Category\Create.cshtml.g.cs
+C:\Users\ASUS\source\repos\MultiShopBackEndProject\MultiShopBackEndProject\obj\Debug\netcoreapp3.1\Razor\Areas\ShopAdmin\Views\Category\Edit.cshtml.g.cs
