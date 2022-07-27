@@ -22,23 +22,34 @@ namespace MultiShopBackEndProject.Controllers
             HomeVM homeVM = new HomeVM
             {
                 Sliders = _context.Sliders.ToList(),
-                Clothes = _context.Clothes.ToList(),
+                Clothes = _context.Clothes.Include(x=>x.ClotheImages).ToList(),
                 Categories = _context.Categories.Include(c=>c.Clothes).ToList()
             };
             return View(homeVM);
         }
 
-        //[HttpGet]
-        //public async Task<IActionResult> Index(string Search)
-        //{
-        //    ViewData["GetClothes"]  = Search;
-        //    var clothequery = from x in _context.Clothes select x;
-        //    if (!string.IsNullOrEmpty(Search))
-        //    {
-        //        clothequery = clothequery.Where(x=>x.Name.Contains(Search));
-        //    }
-        //    return View(await clothequery.AsNoTracking().ToListAsync());
-        //}
+
+      [HttpPost]
+      public IActionResult Index(string str)
+        {
+            HomeVM homeVM = new HomeVM
+            {
+                Sliders = _context.Sliders.ToList(),
+                Categories = _context.Categories.Include(c => c.Clothes).ToList()
+            };
+            if (!string.IsNullOrWhiteSpace(str))
+            {
+                List<Clothe> clothes = _context.Clothes.Include(x=>x.ClotheImages).Where(x=>x.Name.Trim().ToLower().Contains(str)).ToList();
+                homeVM.Clothes = clothes;
+            }
+            else
+            {
+            
+            homeVM.Clothes = _context.Clothes.Include(x => x.ClotheImages).ToList();
+            }
+            return View(homeVM);
+
+        }
 
     }
 }

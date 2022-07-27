@@ -1,6 +1,5 @@
 ﻿@using MultiShopBackEndProject.ViewModels
 @inject MultiShopBackEndProject.Service.LayoutService servis
-@model HomeVM
 <!DOCTYPE html>
 <html lang="en">
 
@@ -44,10 +43,10 @@
             <div class="col-lg-6 text-center text-lg-right">
                 <div class="d-inline-flex align-items-center">
                     <div class="btn-group">
-                        <button type="button" class="btn btn-sm btn-light dropdown-toggle" data-toggle="dropdown">My Account</button>
+                        <button type="button" class="btn btn-sm btn-light dropdown-toggle" data-toggle="dropdown">Giris</button>
                         <div class="dropdown-menu dropdown-menu-right">
-                            <button class="dropdown-item" type="button">Sign in</button>
-                            <button class="dropdown-item" type="button">Sign up</button>
+                            <a asp-controller="account" asp-action="register">Qeydiyyat</a>
+                            <a asp-controller="account" asp-action="login">Daxil ol</a>
                         </div>
                     </div>
                     <div class="btn-group mx-2">
@@ -87,10 +86,10 @@
                 </a>
             </div>
             <div class="col-lg-4 col-6 text-left">
-                <form method="get" asp-action="Index">
+                <form method="post" asp-controller="home" asp-action="Index">
                     <div class="input-group">
-                        <input type="text" class="form-control" placeholder="Search for products" value="@ViewData["GetClothes"]" name="Search">
-                        <input  type="submit" value="Search"/>
+                          <input name="str" type="text"/>
+                          <input  type="submit" value="Search"/>
                         <a asp-action="Index" class="btn btn-primary">Select the name of Clothes</a>
                     </div>
                 </form>
@@ -122,7 +121,7 @@
                                 <a href="" class="dropdown-item">Baby's Dresses</a>
                             </div>
                         </div>
-                        @foreach (var item in Model.Categories)
+                        @foreach (var item in servis.Categories())
                        {
                            <a href="" class="nav-item nav-link">@item.Name</a>
                        }
@@ -141,8 +140,8 @@
                     <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                         <div class="navbar-nav mr-auto py-0">
                             <a href="index.html" class="nav-item nav-link active">Home</a>
-                            <a href="shop.html" class="nav-item nav-link">Shop</a>
-                            <a asp-controller="Clothe" asp-action="ClotheDetail" class="nav-item nav-link">Shop Detail</a>
+                            <a asp-controller="Shop" asp-action="Index" class="nav-item nav-link">Shop</a>
+                            <a asp-controller="Clothe" asp-action="ClotheDetail" class="nav-item nav-link">Clothe Detail</a>
                             <div class="nav-item dropdown">
                                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Pages <i class="fa fa-angle-down mt-1"></i></a>
                                 <div class="dropdown-menu bg-primary rounded-0 border-0 m-0">
@@ -247,7 +246,7 @@
     <!-- Back to Top -->
     <a href="#" class="btn btn-primary back-to-top"><i class="fa fa-angle-double-up"></i></a>
 
-
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
     <!-- JavaScript Libraries -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
@@ -260,6 +259,7 @@
 
     <!-- Template Javascript -->
     <script src="~/assets/js/main.js"></script>
+    @RenderSection("scripts",false);
 </body>
 
 </html>

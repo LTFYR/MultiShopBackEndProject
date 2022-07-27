@@ -5,8 +5,18 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Migrations\20220725193018_createdClothesCategoriesManytoManybetweenthemClotheImagesCloseInformationandDescriptionSizeColor.cs" />
+    <Compile Remove="Migrations\20220725193018_createdClothesCategoriesManytoManybetweenthemClotheImagesCloseInformationandDescriptionSizeColor.Designer.cs" />
+    <Compile Remove="Migrations\20220725193258_createdClothesCategoriesManytoManybetweenthemClotheImagesCloseInformationandDescriptionSizeColorUPDATED.cs" />
+    <Compile Remove="Migrations\20220725193258_createdClothesCategoriesManytoManybetweenthemClotheImagesCloseInformationandDescriptionSizeColorUPDATED.Designer.cs" />
+    <Compile Remove="Migrations\20220726055141_updatedCatgeoryandClotheModels.cs" />
+    <Compile Remove="Migrations\20220726055141_updatedCatgeoryandClotheModels.Designer.cs" />
     <Compile Remove="Migrations\20220726074541_test.cs" />
     <Compile Remove="Migrations\20220726074541_test.Designer.cs" />
+    <Compile Remove="Migrations\20220727053518_updatedTable.cs" />
+    <Compile Remove="Migrations\20220727053518_updatedTable.Designer.cs" />
+    <Compile Remove="Migrations\20220727061451_CreatedClothesCategories.cs" />
+    <Compile Remove="Migrations\20220727061451_CreatedClothesCategories.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>

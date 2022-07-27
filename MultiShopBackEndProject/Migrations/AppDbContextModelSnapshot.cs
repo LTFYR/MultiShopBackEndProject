@@ -311,10 +311,7 @@ namespace MultiShopBackEndProject.Migrations
                     b.Property<string>("Alt")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("ClotheId")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int?>("ClotheId1")
+                    b.Property<int>("ClotheId")
                         .HasColumnType("int");
 
                     b.Property<string>("Image")
@@ -325,7 +322,7 @@ namespace MultiShopBackEndProject.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ClotheId1");
+                    b.HasIndex("ClotheId");
 
                     b.ToTable("ClotheImages");
                 });
@@ -489,7 +486,7 @@ namespace MultiShopBackEndProject.Migrations
             modelBuilder.Entity("MultiShopBackEndProject.Models.Clothe", b =>
                 {
                     b.HasOne("MultiShopBackEndProject.Models.Category", "Category")
-                        .WithMany()
+                        .WithMany("Clothes")
                         .HasForeignKey("CategoryId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -511,7 +508,9 @@ namespace MultiShopBackEndProject.Migrations
                 {
                     b.HasOne("MultiShopBackEndProject.Models.Clothe", "Clothe")
                         .WithMany("ClotheImages")
-                        .HasForeignKey("ClotheId1");
+                        .HasForeignKey("ClotheId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }

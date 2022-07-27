@@ -164,3 +164,6 @@ C:\Users\ASUS\source\repos\MultiShopBackEndProject\MultiShopBackEndProject\obj\D
 C:\Users\ASUS\source\repos\MultiShopBackEndProject\MultiShopBackEndProject\obj\Debug\netcoreapp3.1\Razor\Areas\ShopAdmin\Views\Category\Index.cshtml.g.cs
 C:\Users\ASUS\source\repos\MultiShopBackEndProject\MultiShopBackEndProject\obj\Debug\netcoreapp3.1\Razor\Areas\ShopAdmin\Views\Category\Create.cshtml.g.cs
 C:\Users\ASUS\source\repos\MultiShopBackEndProject\MultiShopBackEndProject\obj\Debug\netcoreapp3.1\Razor\Areas\ShopAdmin\Views\Category\Edit.cshtml.g.cs
+C:\Users\ASUS\source\repos\MultiShopBackEndProject\MultiShopBackEndProject\obj\Debug\netcoreapp3.1\Razor\Areas\ShopAdmin\Views\Slider\Detail.cshtml.g.cs
+C:\Users\ASUS\source\repos\MultiShopBackEndProject\MultiShopBackEndProject\obj\Debug\netcoreapp3.1\Razor\Views\Shop\Index.cshtml.g.cs
+C:\Users\ASUS\source\repos\MultiShopBackEndProject\MultiShopBackEndProject\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_ShopPartialView.cshtml.g.cs

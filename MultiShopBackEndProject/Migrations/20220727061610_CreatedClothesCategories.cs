@@ -2,17 +2,27 @@
 
 namespace MultiShopBackEndProject.Migrations
 {
-    public partial class createdClothesCategoriesManytoManybetweenthemClotheImagesCloseInformationandDescriptionSizeColor : Migration
+    public partial class CreatedClothesCategories : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.AlterColumn<string>(
+                name: "Key",
+                table: "Settings",
+                nullable: true,
+                oldClrType: typeof(string),
+                oldType: "nvarchar(max)",
+                oldNullable: true);
+
             migrationBuilder.CreateTable(
                 name: "Categories",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(maxLength: 20, nullable: false)
+                    Name = table.Column<string>(maxLength: 20, nullable: false),
+                    Image = table.Column<string>(nullable: true),
+                    Quantity = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -79,14 +89,21 @@ namespace MultiShopBackEndProject.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(nullable: true),
                     Description = table.Column<string>(nullable: true),
-                    Price = table.Column<decimal>(nullable: false),
+                    Price = table.Column<decimal>(type: "decimal(6,2)", nullable: false),
                     Image = table.Column<string>(nullable: true),
                     ClotheDescriptionId = table.Column<int>(nullable: false),
+                    CategoryId = table.Column<int>(nullable: false),
                     ClotheInformationId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Clothes", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Clothes_Categories_CategoryId",
+                        column: x => x.CategoryId,
+                        principalTable: "Categories",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_Clothes_ClotheDescriptions_ClotheDescriptionId",
                         column: x => x.ClotheDescriptionId,
@@ -102,32 +119,6 @@ namespace MultiShopBackEndProject.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "ClotheCategories",
-                columns: table => new
-                {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    CategoryId = table.Column<int>(nullable: false),
-                    ClotheId = table.Column<int>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_ClotheCategories", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_ClotheCategories_Categories_CategoryId",
-                        column: x => x.CategoryId,
-                        principalTable: "Categories",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_ClotheCategories_Clothes_ClotheId",
-                        column: x => x.ClotheId,
-                        principalTable: "Clothes",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "ClotheImages",
                 columns: table => new
                 {
@@ -135,35 +126,42 @@ namespace MultiShopBackEndProject.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Image = table.Column<string>(nullable: true),
                     Alt = table.Column<string>(nullable: true),
-                    ClotheId = table.Column<string>(nullable: true),
-                    IsMain = table.Column<bool>(nullable: false),
-                    ClotheId1 = table.Column<int>(nullable: true)
+                    ClotheId = table.Column<int>(nullable: false),
+                    IsMain = table.Column<bool>(nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_ClotheImages", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_ClotheImages_Clothes_ClotheId1",
-                        column: x => x.ClotheId1,
+                        name: "FK_ClotheImages_Clothes_ClotheId",
+                        column: x => x.ClotheId,
                         principalTable: "Clothes",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_ClotheCategories_CategoryId",
-                table: "ClotheCategories",
-                column: "CategoryId");
+                name: "IX_Settings_Key",
+                table: "Settings",
+                column: "Key",
+                unique: true,
+                filter: "[Key] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
-                name: "IX_ClotheCategories_ClotheId",
-                table: "ClotheCategories",
+                name: "IX_Categories_Name",
+                table: "Categories",
+                column: "Name",
+                unique: true);
+
+            migrationBuilder.CreateIndex(
+                name: "IX_ClotheImages_ClotheId",
+                table: "ClotheImages",
                 column: "ClotheId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_ClotheImages_ClotheId1",
-                table: "ClotheImages",
-                column: "ClotheId1");
+                name: "IX_Clothes_CategoryId",
+                table: "Clothes",
+                column: "CategoryId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Clothes_ClotheDescriptionId",
@@ -174,13 +172,24 @@ namespace MultiShopBackEndProject.Migrations
                 name: "IX_Clothes_ClotheInformationId",
                 table: "Clothes",
                 column: "ClotheInformationId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Colors_Name",
+                table: "Colors",
+                column: "Name",
+                unique: true,
+                filter: "[Name] IS NOT NULL");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Sizes_Name",
+                table: "Sizes",
+                column: "Name",
+                unique: true,
+                filter: "[Name] IS NOT NULL");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropTable(
-                name: "ClotheCategories");
-
             migrationBuilder.DropTable(
                 name: "ClotheImages");
 
@@ -191,16 +200,28 @@ namespace MultiShopBackEndProject.Migrations
                 name: "Sizes");
 
             migrationBuilder.DropTable(
-                name: "Categories");
+                name: "Clothes");
 
             migrationBuilder.DropTable(
-                name: "Clothes");
+                name: "Categories");
 
             migrationBuilder.DropTable(
                 name: "ClotheDescriptions");
 
             migrationBuilder.DropTable(
                 name: "ClotheInformation");
+
+            migrationBuilder.DropIndex(
+                name: "IX_Settings_Key",
+                table: "Settings");
+
+            migrationBuilder.AlterColumn<string>(
+                name: "Key",
+                table: "Settings",
+                type: "nvarchar(max)",
+                nullable: true,
+                oldClrType: typeof(string),
+                oldNullable: true);
         }
     }
 }

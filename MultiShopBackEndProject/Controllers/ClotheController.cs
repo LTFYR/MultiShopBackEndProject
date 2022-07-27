@@ -22,10 +22,9 @@ namespace MultiShopBackEndProject.Controllers
 
         public async Task<IActionResult>  ClotheDetail(int? id)
         {
-            if (id == null) return NotFound();
             Clothe clothe = await _context.Clothes.Include(c => c.ClotheImages).Include(c => c.ClotheInformation).Include(c => c.ClotheDescription).ThenInclude(c => c.Clothes).Include(c => c.Category).FirstOrDefaultAsync(c => c.Id == id);
-            if(clothe == null) return NotFound();
-            return View(clothe);
+            if(clothe == null) return View();
+            return View();
         }
 
         public async Task<IActionResult> Partial()

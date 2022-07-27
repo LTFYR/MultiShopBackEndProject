@@ -10,7 +10,7 @@
         <a class="btn btn-success" asp-area="ShopAdmin" asp-controller="Slider" asp-action="Create">Create a new clothe</a>
     </div>
     <div class="table-responsive pt-3">
-        <table class="table table-dark">
+        <table class="table table-dark ">
             <thead>
                 <tr>
                     <th>
@@ -20,7 +20,16 @@
                         Name
                     </th>
                     <th>
-                        Settings
+                        Create
+                    </th>
+                    <th>
+                        Update
+                    </th>
+                    <th>
+                        Delete
+                    </th>
+                    <th>
+                        Detail
                     </th>
                 </tr>
             </thead>
@@ -40,6 +49,9 @@
                                 </div>
                                 <div>
                                     <a class="btn btn-danger" asp-area="ShopAdmin" asp-controller="Slider" asp-action="Delete" asp-route-id="@color.Id"><i class="mdi mdi-delete"></i></a>
+                                </div>
+                                <div>
+                                    <a class="btn btn-danger" asp-area="ShopAdmin" asp-controller="Slider" asp-action="Detail" asp-route-id="@color.Id"><i class="mdi mdi-file"></i></a>
                                 </div>
                         </td>
                     </tr>

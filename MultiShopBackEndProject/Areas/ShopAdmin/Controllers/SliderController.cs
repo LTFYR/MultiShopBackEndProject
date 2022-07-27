@@ -92,5 +92,12 @@ namespace MultiShopBackEndProject.Areas.ShopAdmin.Controllers
             return RedirectToAction(nameof(Index));
 
         }
+
+        public IActionResult Detail(int? id)
+        {
+            if (id == 0 || id == null) return NotFound();
+            Slider slider = _context.Sliders.FirstOrDefault(s=>s.Id == id);
+            return View(slider);
+        }
     }
 }
