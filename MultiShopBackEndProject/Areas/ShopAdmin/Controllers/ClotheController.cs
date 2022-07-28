@@ -102,5 +102,14 @@ namespace MultiShopBackEndProject.Areas.ShopAdmin.Controllers
              await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
+
+        public IActionResult Detail(int? id)
+        {
+            if (id == 0 || id == null) return NotFound();
+            Clothe clothe = _context.Clothes.FirstOrDefault(s => s.Id == id);
+            return View(clothe);
+        }
+
+        
     }
 }

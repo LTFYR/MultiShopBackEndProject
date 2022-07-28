@@ -137,8 +137,8 @@
                                     <button type="button" class="btn btn-sm btn-light dropdown-toggle" data-toggle="dropdown">Sorting</button>
                                     <div class="dropdown-menu dropdown-menu-right">
                                         
-                                        <a id="ascending" asp-controller="Shop" asp-action="SortName" asp-route-sorting="@("ascending")" class="dropdown-item">A-Z</a>
-                                        <a id="desending" asp-controller="Shop" asp-action="SortName" asp-route-sorting="@("desending")" class="dropdown-item sort" >Z-A</a>
+                                        <a id="ascending" asp-controller="Shop" asp-action="Index" asp-route-sorting="@("ascending")" class="dropdown-item">A-Z</a>
+                                        <a id="desending" asp-controller="Shop" asp-action="Index" asp-route-sorting="@("desending")" class="dropdown-item sort" >Z-A</a>
                                     </div>
                                 </div>
                                 <div class="btn-group ml-2">
@@ -172,20 +172,20 @@
         </div>
     </div>
     @section scripts{ 
-    <script>
-       //const prnt = document.querySelector("#product-sorting");
-       // const products = document.querySelector("#products");
-       // const AZ = prnt.querySelector("#desending");
-       // const ZA = prnt.querySelector("#ascending");
-       // prnt.addEventListener("click", (e) => {
-       //     e.preventDefault();
-       //     const id = e.target.id;
-       //     const href = e.target.getAttribute("href");
-       //     if (e.target != prnt.querySelector("button")) {
-       //          fetch(href)
-       //         .then(res => res.text())
-       //         .then(data => products.innerHTML = data);
-       //     }
-       // })
-    </script>
+    @*<script>
+        const prnt = document.querySelector("#product-sorting");
+        const products = document.querySelector("#products");
+        const AZ = prnt.querySelector("#desending");
+        const ZA = prnt.querySelector("#ascending");
+        prnt.addEventListener("click", (e) => {
+            e.preventDefault();
+            const id = e.target.id;
+            const href = e.target.getAttribute("href");
+            if (e.target != prnt.querySelector("button")) {
+                 fetch(href)
+                .then(res => res.text())
+                .then(data => products.innerHTML = data);
+            }
+        })
+    </script>*@
 }

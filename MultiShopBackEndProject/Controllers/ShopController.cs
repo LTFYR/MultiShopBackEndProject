@@ -17,13 +17,33 @@ namespace MultiShopBackEndProject.Controllers
         {
             _context = context;
         }
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(int? categoryId,string sorting)
         {
-            List<Clothe> clothes = _context.Clothes.Include(c=>c.ClotheImages).ToList();
+            List<Clothe> clothes;
+            if (!string.IsNullOrEmpty(sorting))
+            {
+               clothes = SortName(sorting);
+            }
+            else
+            {
+                if (categoryId == null)
+                {
+                    clothes = _context.Clothes.Include(c => c.ClotheImages).ToList();
+                }
+                else
+                {
+                    clothes = await _context.Clothes
+                    .Include(c => c.ClotheImages)
+                    .Where(c => c.CategoryId == categoryId)
+                    .OrderByDescending(c => c.Id)
+                    .ToListAsync();
+                }
+            }
+
             return View(clothes);
         }
 
-        public ActionResult SortName(string sorting)
+        public List<Clothe> SortName(string sorting)
         {
             List<Clothe> clothe = _context.Clothes.Include(c=>c.ClotheImages).OrderByDescending(c=>c.Id).ToList(); 
             switch (sorting)
@@ -38,7 +58,11 @@ namespace MultiShopBackEndProject.Controllers
                     clothe = clothe.OrderByDescending(clothe => clothe.Id).ToList();
                     break;
             }
-            return PartialView("_ShopPartialView",clothe);
+            return clothe;
+
+
+            
         }
+        
     }
 }

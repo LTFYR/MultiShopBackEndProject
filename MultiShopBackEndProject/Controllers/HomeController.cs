@@ -32,6 +32,8 @@ namespace MultiShopBackEndProject.Controllers
       [HttpPost]
       public IActionResult Index(string str)
         {
+
+            
             HomeVM homeVM = new HomeVM
             {
                 Sliders = _context.Sliders.ToList(),
@@ -48,7 +50,12 @@ namespace MultiShopBackEndProject.Controllers
             homeVM.Clothes = _context.Clothes.Include(x => x.ClotheImages).ToList();
             }
             return View(homeVM);
+        }
+        
 
+        public async Task<IActionResult> Contact()
+        {
+            return View();
         }
 
     }

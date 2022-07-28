@@ -9,6 +9,10 @@ namespace MultiShopBackEndProject.Models
         public int ColorId { get; set; }
         public Color Color { get; set; }
         public int SizeId { get; set; }
+        public decimal Price { get; set; }
+        public int Quantity { get; set; }
         public Size Size { get; set; }
+        public string AppUserId { get; set; }
+        public AppUser AppUser { get; set; }
     }
 }

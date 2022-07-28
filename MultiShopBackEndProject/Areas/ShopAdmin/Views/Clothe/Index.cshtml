@@ -14,6 +14,9 @@
             <thead>
                 <tr>
                     <th>
+                        Image
+                    </th>
+                    <th>
                         Id
                     </th>
                     <th>
@@ -29,6 +32,9 @@
                 {
                     <tr>
                         <td>
+                            <img src="~/assets/img//@color.Image"/>
+                        </td>
+                        <td>
                             @color.Id
                         </td>
                         <td>
@@ -39,7 +45,10 @@
                                     <a asp-area="ShopAdmin" asp-controller="Clothe" asp-action="Edit" asp-route-id="@color.Id" class="btn btn-warning"><i class="mdi mdi-border-color"></i></a>
                                 </div>
                                 <div>
-                                    <a class="btn btn-danger" asp-area="ShopAdmin" asp-controller="Color" asp-action="Delete" asp-route-id="@color.Id"><i class="mdi mdi-delete"></i></a>
+                                    <a class="btn btn-danger" asp-area="ShopAdmin" asp-controller="Clothe" asp-action="Delete" asp-route-id="@color.Id"><i class="mdi mdi-delete"></i></a>
+                                </div>
+                                <div>
+                                    <a class="btn btn-danger" asp-area="ShopAdmin" asp-controller="Clothe" asp-action="Detail" asp-route-id="@color.Id"><i class="mdi mdi-file"></i></a>
                                 </div>
                         </td>
                     </tr>

@@ -36,5 +36,6 @@ namespace MultiShopBackEndProject.DAL
         public DbSet<ClotheInformation> ClotheInformation { get; set; }
         public DbSet<Color> Colors { get; set; }
         public DbSet<Size> Sizes { get; set; }
+        public DbSet<BasketItem> BasketItems { get; set; }
     }
 }

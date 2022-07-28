@@ -1,0 +1,15 @@
+﻿@using MultiShopBackEndProject.Models
+@using MultiShopBackEndProject.ViewModels
+@model HomeVM
+
+
+<ul>
+    @{
+        foreach (var item in Model.Clothes)
+        {
+            <li>
+            @Html.ActionLink(@item.Name,"Index","Shop", new {category = @item.CategoryId})
+            </li>
+        }
+    }
+</ul>

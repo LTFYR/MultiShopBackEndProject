@@ -221,6 +221,44 @@ namespace MultiShopBackEndProject.Migrations
                     b.ToTable("AspNetUsers");
                 });
 
+            modelBuilder.Entity("MultiShopBackEndProject.Models.BasketItem", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("AppUserId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<int>("ClotheId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ColorId")
+                        .HasColumnType("int");
+
+                    b.Property<decimal>("Price")
+                        .HasColumnType("decimal(6,2)");
+
+                    b.Property<int>("Quantity")
+                        .HasColumnType("int");
+
+                    b.Property<int>("SizeId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("AppUserId");
+
+                    b.HasIndex("ClotheId");
+
+                    b.HasIndex("ColorId");
+
+                    b.HasIndex("SizeId");
+
+                    b.ToTable("BasketItems");
+                });
+
             modelBuilder.Entity("MultiShopBackEndProject.Models.Category", b =>
                 {
                     b.Property<int>("Id")
@@ -479,6 +517,31 @@ namespace MultiShopBackEndProject.Migrations
                     b.HasOne("MultiShopBackEndProject.Models.AppUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("MultiShopBackEndProject.Models.BasketItem", b =>
+                {
+                    b.HasOne("MultiShopBackEndProject.Models.AppUser", "AppUser")
+                        .WithMany("BasketItems")
+                        .HasForeignKey("AppUserId");
+
+                    b.HasOne("MultiShopBackEndProject.Models.Clothe", "Clothe")
+                        .WithMany()
+                        .HasForeignKey("ClotheId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("MultiShopBackEndProject.Models.Color", "Color")
+                        .WithMany()
+                        .HasForeignKey("ColorId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("MultiShopBackEndProject.Models.Size", "Size")
+                        .WithMany()
+                        .HasForeignKey("SizeId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

@@ -167,3 +167,9 @@ C:\Users\ASUS\source\repos\MultiShopBackEndProject\MultiShopBackEndProject\obj\D
 C:\Users\ASUS\source\repos\MultiShopBackEndProject\MultiShopBackEndProject\obj\Debug\netcoreapp3.1\Razor\Areas\ShopAdmin\Views\Slider\Detail.cshtml.g.cs
 C:\Users\ASUS\source\repos\MultiShopBackEndProject\MultiShopBackEndProject\obj\Debug\netcoreapp3.1\Razor\Views\Shop\Index.cshtml.g.cs
 C:\Users\ASUS\source\repos\MultiShopBackEndProject\MultiShopBackEndProject\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_ShopPartialView.cshtml.g.cs
+C:\Users\ASUS\source\repos\MultiShopBackEndProject\MultiShopBackEndProject\obj\Debug\netcoreapp3.1\Razor\Areas\ShopAdmin\Views\Category\Detail.cshtml.g.cs
+C:\Users\ASUS\source\repos\MultiShopBackEndProject\MultiShopBackEndProject\obj\Debug\netcoreapp3.1\Razor\Areas\ShopAdmin\Views\Clothe\Detail.cshtml.g.cs
+C:\Users\ASUS\source\repos\MultiShopBackEndProject\MultiShopBackEndProject\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_CategoryPartialView.cshtml.g.cs
+C:\Users\ASUS\source\repos\MultiShopBackEndProject\MultiShopBackEndProject\obj\Debug\netcoreapp3.1\Razor\Views\Cart\Index.cshtml.g.cs
+C:\Users\ASUS\source\repos\MultiShopBackEndProject\MultiShopBackEndProject\obj\Debug\netcoreapp3.1\Razor\Views\Home\Contact.cshtml.g.cs
+C:\Users\ASUS\source\repos\MultiShopBackEndProject\MultiShopBackEndProject\obj\Debug\netcoreapp3.1\Razor\Views\Home\Category.cshtml.g.cs

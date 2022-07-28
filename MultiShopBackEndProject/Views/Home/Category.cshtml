@@ -1,0 +1,22 @@
+﻿@using MultiShopBackEndProject.Models
+@model List<Clothe>
+@{
+    ViewData["Title"] = "Category";
+}
+
+@foreach (Clothe item in Model)
+{
+    <div class="col-lg-3 col-md-4 col-sm-6 pb-1">
+                <a class="text-decoration-none" href="">
+                    <div class="cat-item d-flex align-items-center mb-4">
+                        <div class="overflow-hidden" style="width: 100px; height: 100px;">
+                            <img class="img-fluid" src="~/assets/img/@item.ClotheImages.FirstOrDefault(i=>i.IsMain == true).Image" alt="">
+                        </div>
+                        <div class="flex-fill pl-3">
+                            <h6>@item.Name</h6>
+                        </div>
+                    </div>
+                </a>
+            </div>
+}
+
