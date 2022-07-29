@@ -42,6 +42,12 @@
             </div>
             <div class="col-lg-6 text-center text-lg-right">
                 <div class="d-inline-flex align-items-center">
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <p><a  style="border:1px solid gainsboro; background-color: black; color: white" asp-controller="Account" asp-action="Logout">Logout</a>,@Html.ActionLink(User.Identity.Name, "Manage", "Account", routeValues: null, htmlAttributes: new { @class = "username", title = "Manage" })</p>
+                    }
+                    else
+                    {
                     <div class="btn-group">
                         <button type="button" class="btn btn-sm btn-light dropdown-toggle" data-toggle="dropdown">Giris</button>
                         <div class="dropdown-menu dropdown-menu-right">
@@ -49,6 +55,7 @@
                             <a asp-controller="account" asp-action="login">Daxil ol</a>
                         </div>
                     </div>
+                    }
                     <div class="btn-group mx-2">
                         <button type="button" class="btn btn-sm btn-light dropdown-toggle" data-toggle="dropdown">USD</button>
                         <div class="dropdown-menu dropdown-menu-right">
@@ -90,7 +97,6 @@
                     <div class="input-group">
                           <input name="str" type="text"/>
                           <input  type="submit" value="Search"/>
-                        <a asp-action="Index" class="btn btn-primary">Select the name of Clothes</a>
                     </div>
                 </form>
             </div>
@@ -146,7 +152,7 @@
                                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Pages <i class="fa fa-angle-down mt-1"></i></a>
                                 <div class="dropdown-menu bg-primary rounded-0 border-0 m-0">
                                     <a asp-controller="Cart" asp-action="Index" class="dropdown-item">Shopping Cart</a>
-                                    <a href="checkout.html" class="dropdown-item">Checkout</a>
+                                    <a class="dropdown-item">Checkout</a>
                                 </div>
                             </div>
                             <a asp-controller="Home" asp-action="Contact" class="nav-item nav-link">Contact</a>

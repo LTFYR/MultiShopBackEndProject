@@ -23,7 +23,8 @@ namespace MultiShopBackEndProject.Controllers
             {
                 Sliders = _context.Sliders.ToList(),
                 Clothes = _context.Clothes.Include(x=>x.ClotheImages).ToList(),
-                Categories = _context.Categories.Include(c=>c.Clothes).ToList()
+                Categories = _context.Categories.Include(c=>c.Clothes).ToList(),
+                Reclams = _context.Reclams.ToList()
             };
             return View(homeVM);
         }
@@ -33,11 +34,12 @@ namespace MultiShopBackEndProject.Controllers
       public IActionResult Index(string str)
         {
 
-            
+
             HomeVM homeVM = new HomeVM
             {
                 Sliders = _context.Sliders.ToList(),
-                Categories = _context.Categories.Include(c => c.Clothes).ToList()
+                Categories = _context.Categories.Include(c => c.Clothes).ToList(),
+                Reclams = _context.Reclams.ToList()
             };
             if (!string.IsNullOrWhiteSpace(str))
             {
@@ -45,8 +47,7 @@ namespace MultiShopBackEndProject.Controllers
                 homeVM.Clothes = clothes;
             }
             else
-            {
-            
+            {      
             homeVM.Clothes = _context.Clothes.Include(x => x.ClotheImages).ToList();
             }
             return View(homeVM);

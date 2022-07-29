@@ -19,9 +19,10 @@ namespace MultiShopBackEndProject.Controllers
         }
         public async Task<IActionResult> Index(int? categoryId,string sorting)
         {
-            List<Clothe> clothes;
+
+            List<Clothe> clothes = new List<Clothe>();
             if (!string.IsNullOrEmpty(sorting))
-            {
+            {     
                clothes = SortName(sorting);
             }
             else
@@ -45,17 +46,17 @@ namespace MultiShopBackEndProject.Controllers
 
         public List<Clothe> SortName(string sorting)
         {
-            List<Clothe> clothe = _context.Clothes.Include(c=>c.ClotheImages).OrderByDescending(c=>c.Id).ToList(); 
+            List<Clothe> clothe = new List<Clothe>(); 
             switch (sorting)
             {
                 case "desending":
-                    clothe=clothe.OrderByDescending(clothe=>clothe.Name).ToList();
+                    clothe= _context.Clothes.Include(x => x.ClotheImages).OrderByDescending(clothe=>clothe.Name).ToList();
                     break;
                 case "ascending":
-                    clothe = clothe.OrderBy(clothe => clothe.Name).ToList();
+                    clothe = _context.Clothes.Include(x => x.ClotheImages).OrderBy(clothe => clothe.Name).ToList();
                     break;
                 default:
-                    clothe = clothe.OrderByDescending(clothe => clothe.Id).ToList();
+                    clothe = _context.Clothes.Include(x => x.ClotheImages).ToList();
                     break;
             }
             return clothe;

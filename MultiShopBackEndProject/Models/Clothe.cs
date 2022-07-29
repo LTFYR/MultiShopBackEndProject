@@ -24,5 +24,7 @@ namespace MultiShopBackEndProject.Models
         public List<IFormFile> Photos { get; set; }
         [NotMapped]
         public IFormFile Main { get; set; }
+        [NotMapped]
+        public List<int> ImagesId { get; set; }
     }
 }

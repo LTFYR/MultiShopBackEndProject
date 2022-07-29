@@ -399,6 +399,30 @@ namespace MultiShopBackEndProject.Migrations
                     b.ToTable("Colors");
                 });
 
+            modelBuilder.Entity("MultiShopBackEndProject.Models.Reclam", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Image")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Offer")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Title")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Url")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Reclams");
+                });
+
             modelBuilder.Entity("MultiShopBackEndProject.Models.Setting", b =>
                 {
                     b.Property<int>("Id")

@@ -28,27 +28,27 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach (Clothe color in Model)
+                @foreach (Clothe clothe in Model)
                 {
                     <tr>
                         <td>
-                            <img src="~/assets/img//@color.Image"/>
+                            <img src="~/assets/img/@clothe.ClotheImages.FirstOrDefault(i=>i.IsMain == true).Image"/>
                         </td>
                         <td>
-                            @color.Id
+                            @clothe.Id
                         </td>
                         <td>
-                            @color.Name
+                            @clothe.Name
                         </td>
                         <td  class="d-flex">
                                 <div>
-                                    <a asp-area="ShopAdmin" asp-controller="Clothe" asp-action="Edit" asp-route-id="@color.Id" class="btn btn-warning"><i class="mdi mdi-border-color"></i></a>
+                                    <a asp-area="ShopAdmin" asp-controller="Clothe" asp-action="Edit" asp-route-id="@clothe.Id" class="btn btn-warning"><i class="mdi mdi-border-color"></i></a>
                                 </div>
                                 <div>
-                                    <a class="btn btn-danger" asp-area="ShopAdmin" asp-controller="Clothe" asp-action="Delete" asp-route-id="@color.Id"><i class="mdi mdi-delete"></i></a>
+                                    <a class="btn btn-danger" asp-area="ShopAdmin" asp-controller="Clothe" asp-action="Delete" asp-route-id="@clothe.Id"><i class="mdi mdi-delete"></i></a>
                                 </div>
                                 <div>
-                                    <a class="btn btn-danger" asp-area="ShopAdmin" asp-controller="Clothe" asp-action="Detail" asp-route-id="@color.Id"><i class="mdi mdi-file"></i></a>
+                                    <a class="btn btn-danger" asp-area="ShopAdmin" asp-controller="Clothe" asp-action="Detail" asp-route-id="@clothe.Id"><i class="mdi mdi-file"></i></a>
                                 </div>
                         </td>
                     </tr>

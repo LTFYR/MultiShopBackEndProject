@@ -153,7 +153,7 @@
                         </div>
                     </div>
                     <div class="row d-flex" id="products">
-                         @await Html.PartialAsync("_ShopPartialView",Model.OrderBy(p=>p.Price).Take(8).ToList()) 
+                         @await Html.PartialAsync("_ShopPartialView",Model.Take(8).ToList()) 
                     </div>
                     <div class="col-12">
                         <nav>

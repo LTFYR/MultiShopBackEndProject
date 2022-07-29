@@ -24,7 +24,7 @@ namespace MultiShopBackEndProject.Areas.ShopAdmin.Controllers
         }
         public IActionResult Index()
         {
-            List<Clothe> clothe = _context.Clothes.ToList();
+            List<Clothe> clothe = _context.Clothes.Include(c=>c.ClotheImages).ToList();
             return View(clothe);
         }
         public IActionResult Create()
@@ -91,6 +91,7 @@ namespace MultiShopBackEndProject.Areas.ShopAdmin.Controllers
                 Clothe = clothe
             };
             clothe.ClotheImages.Add(clotheImage);
+           
 
             //Clothe exsited = _context.Clothes.FirstOrDefault(c=>c.Id == clothe.Id);
             //if (exsited == null)
@@ -100,6 +101,34 @@ namespace MultiShopBackEndProject.Areas.ShopAdmin.Controllers
             //}
              await _context.Clothes.AddAsync(clothe);
              await _context.SaveChangesAsync();
+            return RedirectToAction(nameof(Index));
+        }
+
+        public async Task<IActionResult> Edit(int? id)
+        {
+            ViewBag.Info = _context.ClotheInformation.ToList();
+            ViewBag.Desc = _context.ClotheDescriptions.ToList();
+            ViewBag.Categories = _context.Categories.ToList();
+            if (id == null || id == 0) return NotFound();
+            Clothe clothe = await _context.Clothes.Include(p => p.ClotheImages).Include(p => p.ClotheInformation)
+                .SingleOrDefaultAsync(p => p.Id == id);
+            if (clothe == null) return NotFound();
+            return View(clothe);
+        }
+
+
+        [HttpPost]
+        [AutoValidateAntiforgeryToken]
+        [ActionName("Edit")]
+        public async Task<IActionResult> Update(int? id, Clothe clothe)
+        {
+            if (id == null || id == 0) return NotFound();
+            Clothe current = await _context.Clothes.Include(p => p.ClotheImages).Include(p => p.ClotheInformation).Include(p => p.Category).SingleOrDefaultAsync(p => p.Id == id);
+            if (current == null) return NotFound();
+            List<ClotheImage> remove = current.ClotheImages.Where(p => p.IsMain == false && clothe.ImagesId.Contains(p.Id)).ToList();
+            if (clothe == null) return NotFound();
+            current.ClotheImages.RemoveAll(p => remove.Any(r => p.Id == r.Id));
+
             return RedirectToAction(nameof(Index));
         }
 

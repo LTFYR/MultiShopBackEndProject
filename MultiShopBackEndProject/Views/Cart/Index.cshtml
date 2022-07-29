@@ -32,11 +32,11 @@
                                         <i class="fa fa-minus"></i>
                                         </button>
                                     </div>
-                                    <input type="text" class="form-control form-control-sm bg-secondary border-0 text-center" value="1">
+                                    <input type="text" class="form-control form-control-sm bg-secondary border-0 text-center" value="@servis.Basket().basketItemVMs.Count">
                                     <div class="input-group-btn">
-                                        <button class="btn btn-sm btn-primary btn-plus">
+                                        <a class="btn btn-sm btn-primary btn-plus">
                                             <i class="fa fa-plus"></i>
-                                        </button>
+                                        </a>
                                     </div>
                                 </div>
                             </td>
@@ -79,7 +79,15 @@
                     <div class="pt-2">
                         <div class="d-flex justify-content-between mt-2">
                             <h5>Total</h5>
-                            <h5>@servis.Basket().basketItemVMs.Count</h5>
+                        @{
+                            decimal sum = 0M;
+                        }
+                            @foreach (BasketItemVM item in  servis.Basket().basketItemVMs)
+                        {
+                            sum += item.Subtotal;
+                        }
+                        
+                            <h5>@sum</h5>
                         </div>
                         <button class="btn btn-block btn-primary font-weight-bold my-3 py-3">Proceed To Checkout</button>
                     </div>

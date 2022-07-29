@@ -1,0 +1,66 @@
+﻿@using MultiShopBackEndProject.Models
+@model List<Reclam>
+@{
+    ViewData["Title"] = "Index page";
+}
+
+
+<div class="main-panel">
+    <div>
+        <a class="btn btn-success" asp-area="ShopAdmin" asp-controller="Reclam" asp-action="Create">Create a new clothe</a>
+    </div>
+    <div class="table-responsive pt-3">
+        <table class="table table-dark">
+            <thead>
+                <tr>
+                    <th>
+                        Image
+                    </th>
+                    <th>
+                        Id
+                    </th>
+                    <th>
+                        Name
+                    </th>
+                    <th>
+                        Offer
+                    </th>
+                    <th>
+                        Settings
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (Reclam reclam in Model)
+                {
+                    <tr>
+                        <td>
+                           <img src="~/assets/img/@reclam.Image"/>
+                        </td>
+                        <td>
+                            @reclam.Id
+                        </td>
+                        <td>
+                            @reclam.Title
+                        </td>
+                        <td>
+                            @reclam.Offer
+                        </td>
+                        <td  class="d-flex">
+                                <div>
+                                    <a asp-area="ShopAdmin" asp-controller="Reclam" asp-action="Edit" asp-route-id="@reclam.Id" class="btn btn-warning"><i class="mdi mdi-border-color"></i></a>
+                                </div>
+                                <div>
+                                    <a class="btn btn-danger" asp-area="ShopAdmin" asp-controller="Reclam" asp-action="Delete" asp-route-id="@reclam.Id"><i class="mdi mdi-delete"></i></a>
+                                </div>
+                                <div>
+                                    <a class="btn btn-danger" asp-area="ShopAdmin" asp-controller="Reclam" asp-action="Detail" asp-route-id="@reclam.Id"><i class="mdi mdi-file"></i></a>
+                                </div>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+

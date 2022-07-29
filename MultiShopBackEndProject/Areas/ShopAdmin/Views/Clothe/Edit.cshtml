@@ -1,0 +1,72 @@
+﻿@model Clothe
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<div class="main-panel">
+    <h2 style="font-size:20px" class="text-center btn btn-secondary">Create a new slider</h2>
+    @if(TempData["Filname"] != null)
+    {
+        <div class="alert alert-danger">@TempData["Filename"]</div>
+    }
+    <div class="alert alert-danger" asp-validation-summary="ModelOnly"></div>
+    <form class="mt-3" method="post" enctype="multipart/form-data">
+    <div>
+        <label>Add main image:</label><br/>
+        <input asp-for="Main"  class="form-control" /><br />
+        <span class="text-danger" asp-validation-for="Main"></span>       
+    </div>
+    <div>
+        <h2>Another images</h2>
+            <div class="image d-flex">
+
+                @foreach (ClotheImage image in Model.ClotheImages.Where(p => p.IsMain == false))
+                {
+                    <div style="position:relative;" class="col-sm-3">
+                        <img src="~/assets/img/@image.Clothe.ClotheImages.FirstOrDefault(c=>c.IsMain == true).Image" style="width:100%;height:300px;object-fit:contain">
+                        <input type="hidden" name="ImagesId" value="@image.Id">
+                        <button style="position:absolute; right:5px" type="button" class="btn btn-danger">X</button>
+                    </div>
+                }
+            </div>
+        <label>Add a title:</label><br/>
+        <input asp-for="Name"  class="form-control" /><br />
+        <span class="text-danger" asp-validation-for="Name"></span>       
+    </div>
+    <div>
+        <label>Add a desc:</label><br/>
+        <input asp-for="Description"  class="form-control" /><br />
+        <span class="text-danger" asp-validation-for="Description"></span>       
+    </div>
+    <div>
+        <label>Add price:</label><br/>
+        <input asp-for="Price"  class="form-control" /><br />
+        <span class="text-danger" asp-validation-for="Price"></span>       
+    </div>
+    <div>
+        <label>Product info:</label><br/>
+        <select asp-for="ClotheInformationId" asp-items="@(new SelectList(ViewBag.Info,"Id","Information"))"></select>  
+    </div>
+     <div>
+        <label>Product info:</label><br/>
+        <select asp-for="ClotheDescriptionId" asp-items="@(new SelectList(ViewBag.Desc,"Id","Description"))"></select>  
+    </div>
+    
+    
+    <div class="mt-2">
+        <button style="color:red" class="btn btn-primary" type="submit">Create</button>
+    </div>
+</form>
+</div>
+@section Scripts {
+    <script>
+        let btn = document.querySelectorAll(".btn-danger")
+btn.forEach(b => {
+    b.addEventListener("click", function() {
+        b.parentElement.remove();
+    })
+})
+    </script>
+}
+
+

@@ -51,6 +51,7 @@ namespace MultiShopBackEndProject.Service
                     BasketItemVM basketItemVM = new BasketItemVM
                     {
                         Clothe = current,
+                        ClotheId=item.Id,
                         Quantity = item.Quantity,
                         Subtotal = (current.Price * item.Quantity),
                         //Total = 
