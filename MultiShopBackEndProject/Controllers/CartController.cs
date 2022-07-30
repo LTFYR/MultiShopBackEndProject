@@ -24,11 +24,13 @@ namespace MultiShopBackEndProject.Controllers
         public IActionResult Index()
         {
             return View();
-        }
+        }   
         public async Task<IActionResult> AddCart(int? id)
         {
             if (id == null || id == 0) return NotFound();
-            Clothe clothe = await _context.Clothes.FirstOrDefaultAsync(p => p.Id == id);
+            Clothe clothe = await _context.Clothes.FirstOrDefaultAsync(c => c.Id == id);
+            //Color color = await _context.Colors.FirstOrDefaultAsync(c => c.Id == id);
+            //Size size = await _context.Sizes.FirstOrDefaultAsync(c => c.Id == id);
             if (clothe == null) return NotFound();
             if (User.Identity.IsAuthenticated)
             {
@@ -41,7 +43,9 @@ namespace MultiShopBackEndProject.Controllers
                         Clothe = clothe,
                         AppUser = user,
                         Quantity = 1,
-                        Price = clothe.Price
+                        Price = clothe.Price,
+                        //Color = color,
+                        //Size = size
                     };
                     _context.BasketItems.Add(current);
                 }

@@ -17,9 +17,12 @@
     <Compile Remove="Migrations\20220727053518_updatedTable.Designer.cs" />
     <Compile Remove="Migrations\20220727061451_CreatedClothesCategories.cs" />
     <Compile Remove="Migrations\20220727061451_CreatedClothesCategories.Designer.cs" />
+    <Compile Remove="Migrations\20220730173109_createdOrderModel.cs" />
+    <Compile Remove="Migrations\20220730173109_createdOrderModel.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="MailKit" Version="3.3.0" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="3.1.27" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.27" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.27" />

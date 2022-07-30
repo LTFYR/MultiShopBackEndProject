@@ -237,6 +237,9 @@ namespace MultiShopBackEndProject.Migrations
                     b.Property<int>("ColorId")
                         .HasColumnType("int");
 
+                    b.Property<int?>("OrderId")
+                        .HasColumnType("int");
+
                     b.Property<decimal>("Price")
                         .HasColumnType("decimal(6,2)");
 
@@ -252,9 +255,7 @@ namespace MultiShopBackEndProject.Migrations
 
                     b.HasIndex("ClotheId");
 
-                    b.HasIndex("ColorId");
-
-                    b.HasIndex("SizeId");
+                    b.HasIndex("OrderId");
 
                     b.ToTable("BasketItems");
                 });
@@ -397,6 +398,41 @@ namespace MultiShopBackEndProject.Migrations
                         .HasFilter("[Name] IS NOT NULL");
 
                     b.ToTable("Colors");
+                });
+
+            modelBuilder.Entity("MultiShopBackEndProject.Models.Order", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("AppUserId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("Location")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<decimal>("Price")
+                        .HasColumnType("decimal(6,2)");
+
+                    b.Property<int>("Quantity")
+                        .HasColumnType("int");
+
+                    b.Property<bool?>("Status")
+                        .HasColumnType("bit");
+
+                    b.Property<int?>("UserId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("dateTime")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("AppUserId");
+
+                    b.ToTable("Orders");
                 });
 
             modelBuilder.Entity("MultiShopBackEndProject.Models.Reclam", b =>
@@ -557,17 +593,9 @@ namespace MultiShopBackEndProject.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("MultiShopBackEndProject.Models.Color", "Color")
-                        .WithMany()
-                        .HasForeignKey("ColorId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("MultiShopBackEndProject.Models.Size", "Size")
-                        .WithMany()
-                        .HasForeignKey("SizeId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                    b.HasOne("MultiShopBackEndProject.Models.Order", null)
+                        .WithMany("BasketItems")
+                        .HasForeignKey("OrderId");
                 });
 
             modelBuilder.Entity("MultiShopBackEndProject.Models.Clothe", b =>
@@ -598,6 +626,13 @@ namespace MultiShopBackEndProject.Migrations
                         .HasForeignKey("ClotheId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("MultiShopBackEndProject.Models.Order", b =>
+                {
+                    b.HasOne("MultiShopBackEndProject.Models.AppUser", "AppUser")
+                        .WithMany()
+                        .HasForeignKey("AppUserId");
                 });
 #pragma warning restore 612, 618
         }

@@ -3,7 +3,7 @@
 @addTagHelper *, AuthoringTagHelpers
 @model Clothe
 @{
-    List<Category> cate = ViewBag.Category;
+    List<Category> cate = ViewBag.Categories;
     List<ClotheInformation> info = ViewBag.ClotheInformation;
     List<ClotheDescription> desc = ViewBag.ClotheDescription;
 }
@@ -45,10 +45,10 @@
         <input asp-for="Price"  class="form-control" /><br />
         <span class="text-danger" asp-validation-for="Price"></span>       
     </div>
-    <div>
+   @* <div>
         <label>Add a category:</label><br/>
         <select asp-for="CategoryId" asp-items="@(new SelectList(cate, "Id", "Name"))" ></select>      
-    </div>
+    </div>*@
     <div>
         <label>Add a information:</label><br/>
         <select asp-for="ClotheInformationId" asp-items="@(new SelectList(info, "Id", "Information"))" ></select>      

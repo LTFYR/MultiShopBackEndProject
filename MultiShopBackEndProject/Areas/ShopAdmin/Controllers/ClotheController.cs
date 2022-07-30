@@ -24,7 +24,7 @@ namespace MultiShopBackEndProject.Areas.ShopAdmin.Controllers
         }
         public IActionResult Index()
         {
-            List<Clothe> clothe = _context.Clothes.Include(c=>c.ClotheImages).ToList();
+            List<Clothe> clothe = _context.Clothes.Include(c=>c.ClotheInformation).Include(c=>c.ClotheImages).Include(c=>c.Category).ToList();
             return View(clothe);
         }
         public IActionResult Create()
@@ -110,7 +110,7 @@ namespace MultiShopBackEndProject.Areas.ShopAdmin.Controllers
             ViewBag.Desc = _context.ClotheDescriptions.ToList();
             ViewBag.Categories = _context.Categories.ToList();
             if (id == null || id == 0) return NotFound();
-            Clothe clothe = await _context.Clothes.Include(p => p.ClotheImages).Include(p => p.ClotheInformation)
+            Clothe clothe = await _context.Clothes.Include(p => p.ClotheImages).Include(c => c.ClotheInformation).Include(c => c.ClotheDescription).Include(c => c.Category)
                 .SingleOrDefaultAsync(p => p.Id == id);
             if (clothe == null) return NotFound();
             return View(clothe);
@@ -119,23 +119,27 @@ namespace MultiShopBackEndProject.Areas.ShopAdmin.Controllers
 
         [HttpPost]
         [AutoValidateAntiforgeryToken]
-        [ActionName("Edit")]
-        public async Task<IActionResult> Update(int? id, Clothe clothe)
+        public async Task<IActionResult> Edit(int? id, Clothe clothe)
         {
             if (id == null || id == 0) return NotFound();
-            Clothe current = await _context.Clothes.Include(p => p.ClotheImages).Include(p => p.ClotheInformation).Include(p => p.Category).SingleOrDefaultAsync(p => p.Id == id);
+            Clothe current = await _context.Clothes.Include(p => p.ClotheImages).Include(p => p.ClotheInformation).Include(c => c.ClotheDescription).Include(c => c.Category).FirstOrDefaultAsync(p => p.Id == id);
+            if (!ModelState.IsValid) return View(current);
             if (current == null) return NotFound();
-            List<ClotheImage> remove = current.ClotheImages.Where(p => p.IsMain == false && clothe.ImagesId.Contains(p.Id)).ToList();
+            List<ClotheImage> remove = current.ClotheImages.Where(p => p.IsMain == false && !clothe.ImagesId.Contains(p.Id)).ToList();
             if (clothe == null) return NotFound();
+            _context.Entry(current).CurrentValues.SetValues(clothe);
             current.ClotheImages.RemoveAll(p => remove.Any(r => p.Id == r.Id));
+            await _context.SaveChangesAsync();
 
             return RedirectToAction(nameof(Index));
         }
 
+
+
         public IActionResult Detail(int? id)
         {
             if (id == 0 || id == null) return NotFound();
-            Clothe clothe = _context.Clothes.FirstOrDefault(s => s.Id == id);
+            Clothe clothe = _context.Clothes.Include(c=>c.ClotheImages).FirstOrDefault(s => s.Id == id);
             return View(clothe);
         }
 

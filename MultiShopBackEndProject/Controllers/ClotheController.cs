@@ -24,6 +24,8 @@ namespace MultiShopBackEndProject.Controllers
 
         public async Task<IActionResult>  ClotheDetail(int? id)
         {
+            ViewBag.Color = _context.Colors.ToList();
+            ViewBag.Size = _context.Sizes.ToList();
             Clothe clothe = await _context.Clothes.Include(c => c.ClotheImages)
                   .Include(x => x.ClotheInformation)
                   .Include(x => x.Category).ThenInclude(x=>x.Clothes).ThenInclude(x=>x.ClotheImages)
