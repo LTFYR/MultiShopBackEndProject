@@ -44,16 +44,30 @@ namespace MultiShopBackEndProject.Areas.ShopAdmin.Controllers
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
-        public async Task<IActionResult> Edit()
+        public IActionResult Edit(int? id)
         {
-            return View();
+            if (id == 0 || id == null) return NotFound();
+            Reclam reclam = _context.Reclams.FirstOrDefault(c => c.Id == id);
+            if (reclam == null) return View();
+            return View(reclam);
         }
 
         [HttpPost]
         [AutoValidateAntiforgeryToken]
         public async Task<IActionResult> Edit(int? id, Reclam reclam)
         {
-            return View();
+            if (id == null || id == 0) return NotFound();
+            Reclam current = _context.Reclams.FirstOrDefault(c => c.Id == id);
+            if (reclam == null) return NotFound();
+            bool copy = _context.Categories.Any(c => c.Name.Trim().ToLower() == reclam.Title.Trim().ToLower());
+            if (copy)
+            {
+                ModelState.AddModelError("Name", "Wrong click");
+                return View();
+            }
+            _context.Reclams.Add(current);
+            await _context.SaveChangesAsync();
+            return RedirectToAction(nameof(Index));
         }
 
 
