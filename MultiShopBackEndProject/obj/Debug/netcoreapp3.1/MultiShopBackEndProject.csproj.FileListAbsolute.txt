@@ -189,3 +189,4 @@ C:\Users\ASUS\source\repos\MultiShopBackEndProject\MultiShopBackEndProject\bin\D
 C:\Users\ASUS\source\repos\MultiShopBackEndProject\MultiShopBackEndProject\obj\Debug\netcoreapp3.1\MultiShopBackEndProject.MvcApplicationPartsAssemblyInfo.cs
 C:\Users\ASUS\source\repos\MultiShopBackEndProject\MultiShopBackEndProject\bin\Debug\netcoreapp3.1\PagedList.dll
 C:\Users\ASUS\source\repos\MultiShopBackEndProject\MultiShopBackEndProject\bin\Debug\netcoreapp3.1\PagedList.Mvc.dll
+C:\Users\ASUS\source\repos\MultiShopBackEndProject\MultiShopBackEndProject\obj\Debug\netcoreapp3.1\Razor\Views\Mesaj\Index.cshtml.g.cs

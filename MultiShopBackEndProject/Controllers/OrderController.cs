@@ -40,9 +40,11 @@ namespace MultiShopBackEndProject.Controllers
             order.Status = null;
             order.Price = default;
             order.AppUser = user;
+            order.Quantity = default;
             order.BasketItems = basket;
             foreach (BasketItem item in basket)
             {
+                order.Quantity = basket.Count;
                 order.Price += item.Price * item.Quantity;
             }
             await _context.Orders.AddAsync(order);

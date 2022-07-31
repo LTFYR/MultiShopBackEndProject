@@ -22,7 +22,8 @@ namespace MultiShopBackEndProject.Controllers
 
         public async Task<IActionResult> Index(int? categoryId,string sorting,int page = 1)
         {
-
+            ViewBag.CurrentPage = page;
+            ViewBag.TotalPages = Math.Ceiling((decimal)_context.Clothes.Count() / 4);
             List<Clothe> clothes = new List<Clothe>();
             if (!string.IsNullOrEmpty(sorting))
             {     
@@ -32,17 +33,21 @@ namespace MultiShopBackEndProject.Controllers
             {
                 if (categoryId == null)
                 {
-                    clothes = _context.Clothes.Include(c => c.ClotheImages).ToList();
+                   
+                    clothes = _context.Clothes.Include(c => c.ClotheImages).Skip((page - 1) * 4).Take(4).ToList();
                 }
                 else
                 {
+                    
                     clothes = await _context.Clothes
                     .Include(c => c.ClotheImages)
                     .Where(c => c.CategoryId == categoryId)
-                    .OrderByDescending(c => c.Id).Skip((page-1)*4).Take(5)
+                    .OrderByDescending(c => c.Id)
                     .ToListAsync();
                 }
+                
             }
+
 
             return View(clothes);
         }

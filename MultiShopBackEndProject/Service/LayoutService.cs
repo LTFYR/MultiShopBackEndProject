@@ -67,6 +67,7 @@ namespace MultiShopBackEndProject.Service
                     return layoutBasketVM;
                 }
             }
+            else
             {
                 AppUser user =  _userManager.FindByNameAsync(_httpContext.HttpContext.User.Identity.Name).Result;
                 List<BasketItem> basketItems = _context.BasketItems.Where(x => x.AppUserId == user.Id).Include(x => x.Clothe).ThenInclude(x => x.ClotheImages).ToList();
@@ -88,9 +89,10 @@ namespace MultiShopBackEndProject.Service
                         layoutBasketVM.TotalPrice += item.Price;
                     };
                 return layoutBasketVM;
-                };
+                }
+                
 
-            }
+            }   
 
           return null;
         }
