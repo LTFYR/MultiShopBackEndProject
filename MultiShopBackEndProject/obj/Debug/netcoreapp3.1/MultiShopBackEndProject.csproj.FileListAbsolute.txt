@@ -178,7 +178,14 @@ C:\Users\ASUS\source\repos\MultiShopBackEndProject\MultiShopBackEndProject\obj\D
 C:\Users\ASUS\source\repos\MultiShopBackEndProject\MultiShopBackEndProject\obj\Debug\netcoreapp3.1\Razor\Areas\ShopAdmin\Views\Reclam\Detail.cshtml.g.cs
 C:\Users\ASUS\source\repos\MultiShopBackEndProject\MultiShopBackEndProject\obj\Debug\netcoreapp3.1\Razor\Areas\ShopAdmin\Views\Clothe\Edit.cshtml.g.cs
 C:\Users\ASUS\source\repos\MultiShopBackEndProject\MultiShopBackEndProject\obj\Debug\netcoreapp3.1\Razor\Views\Order\Checkout.cshtml.g.cs
-C:\Users\ASUS\source\repos\MultiShopBackEndProject\MultiShopBackEndProject\obj\Debug\netcoreapp3.1\Razor\Views\Contact\Index.cshtml.g.cs
 C:\Users\ASUS\source\repos\MultiShopBackEndProject\MultiShopBackEndProject\bin\Debug\netcoreapp3.1\MailKit.dll
 C:\Users\ASUS\source\repos\MultiShopBackEndProject\MultiShopBackEndProject\bin\Debug\netcoreapp3.1\MimeKit.dll
 C:\Users\ASUS\source\repos\MultiShopBackEndProject\MultiShopBackEndProject\bin\Debug\netcoreapp3.1\BouncyCastle.Crypto.dll
+C:\Users\ASUS\source\repos\MultiShopBackEndProject\MultiShopBackEndProject\bin\Debug\netcoreapp3.1\Xamarin.Essentials.dll
+C:\Users\ASUS\source\repos\MultiShopBackEndProject\MultiShopBackEndProject\obj\Debug\netcoreapp3.1\Razor\Views\Contact\Index.cshtml.g.cs
+C:\Users\ASUS\source\repos\MultiShopBackEndProject\MultiShopBackEndProject\bin\Debug\netcoreapp3.1\JetBrains.Annotations.dll
+C:\Users\ASUS\source\repos\MultiShopBackEndProject\MultiShopBackEndProject\bin\Debug\netcoreapp3.1\X.PagedList.dll
+C:\Users\ASUS\source\repos\MultiShopBackEndProject\MultiShopBackEndProject\bin\Debug\netcoreapp3.1\X.PagedList.Mvc.Core.dll
+C:\Users\ASUS\source\repos\MultiShopBackEndProject\MultiShopBackEndProject\obj\Debug\netcoreapp3.1\MultiShopBackEndProject.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\ASUS\source\repos\MultiShopBackEndProject\MultiShopBackEndProject\bin\Debug\netcoreapp3.1\PagedList.dll
+C:\Users\ASUS\source\repos\MultiShopBackEndProject\MultiShopBackEndProject\bin\Debug\netcoreapp3.1\PagedList.Mvc.dll

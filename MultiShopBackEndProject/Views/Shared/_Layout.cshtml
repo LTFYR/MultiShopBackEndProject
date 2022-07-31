@@ -129,7 +129,7 @@
                         </div>
                         @foreach (var item in servis.Categories())
                        {
-                           <a href="" class="nav-item nav-link">@item.Name</a>
+                           <a asp-controller="Shop" asp-action="Index" asp-route-categoryId="@item.Id" class="nav-item nav-link">@item.Name</a>
                        }
                     </div>
                 </nav>
@@ -264,9 +264,6 @@
     <script>
          let input = document.querySelector("#input").getAttribute();
 
-if (input == 0) {
-
-}
     </script>
     <script src="~/assets/mail/contact.js"></script>
 

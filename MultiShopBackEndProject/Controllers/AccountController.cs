@@ -10,11 +10,13 @@ namespace MultiShopBackEndProject.Controllers
     {
         private readonly UserManager<AppUser> _userManager;
         private readonly SignInManager<AppUser> _signInManager;
+        private readonly RoleManager<IdentityRole> _roleManager;
 
-        public AccountController(UserManager<AppUser> userManager,SignInManager<AppUser> signInManager)
+        public AccountController(UserManager<AppUser> userManager,SignInManager<AppUser> signInManager,RoleManager<IdentityRole> roleManager)
         {
             _userManager = userManager;
             _signInManager = signInManager;
+            _roleManager = roleManager;
         }
         public IActionResult Register()
         {
@@ -48,6 +50,7 @@ namespace MultiShopBackEndProject.Controllers
                 }
                 return View();
             }
+            await _userManager.AddToRoleAsync(user, "Member");
             return RedirectToAction("Index", "Home");
         }
 
@@ -81,5 +84,11 @@ namespace MultiShopBackEndProject.Controllers
             await _signInManager.SignOutAsync();
             return RedirectToAction("Index", "Home");
         }
+
+        //public async Task Roles()
+        //{
+        //    await _roleManager.CreateAsync(new IdentityRole("Admin"));
+        //    await _roleManager.CreateAsync(new IdentityRole("Member"));
+        //}
     }
 }

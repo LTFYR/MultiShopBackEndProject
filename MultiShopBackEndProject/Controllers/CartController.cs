@@ -32,7 +32,7 @@ namespace MultiShopBackEndProject.Controllers
             //Color color = await _context.Colors.FirstOrDefaultAsync(c => c.Id == id);
             //Size size = await _context.Sizes.FirstOrDefaultAsync(c => c.Id == id);
             if (clothe == null) return NotFound();
-            if (User.Identity.IsAuthenticated)
+            if (User.Identity.IsAuthenticated && User.IsInRole("Member"))
             {
                 AppUser user = await _userManager.FindByNameAsync(User.Identity.Name);
                 BasketItem current = await _context.BasketItems.FirstOrDefaultAsync(b => b.AppUserId == user.Id && b.ClotheId == clothe.Id);

@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using MultiShopBackEndProject.DAL;
@@ -9,6 +10,7 @@ using System.Threading.Tasks;
 
 namespace MultiShopBackEndProject.Controllers
 {
+    //[Authorize(Roles = "Member")]
     public class OrderController : Controller
     {
         private readonly AppDbContext _context;
@@ -24,7 +26,9 @@ namespace MultiShopBackEndProject.Controllers
             return View();
         }
 
-        public async Task<IActionResult> OrderBasket(Order order)
+
+        [HttpPost]
+        public async Task<IActionResult> Checkout(Order order)
         {
             AppUser user = await _userManager.FindByNameAsync(User.Identity.Name);
             List<BasketItem> basket = await _context.BasketItems.Include(o=>o.AppUser)
@@ -39,12 +43,12 @@ namespace MultiShopBackEndProject.Controllers
             order.BasketItems = basket;
             foreach (BasketItem item in basket)
             {
-                order.Price += item.Price;
+                order.Price += item.Price * item.Quantity;
             }
             await _context.Orders.AddAsync(order);
             await _context.SaveChangesAsync();
 
-            return Json("isledi");
+            return RedirectToAction("Index","Home");
         }
     }
 }

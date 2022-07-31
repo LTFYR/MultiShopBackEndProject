@@ -39,5 +39,6 @@ namespace MultiShopBackEndProject.DAL
         public DbSet<BasketItem> BasketItems { get; set; }
         public DbSet<Reclam> Reclams { get; set; }
         public DbSet<Order> Orders { get; set; }
+        public DbSet<Contact> Contacts { get; set; }
     }
 }

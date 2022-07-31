@@ -6,6 +6,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using X.PagedList;
+using X.PagedList.Mvc.Core;
 
 namespace MultiShopBackEndProject.Controllers
 {
@@ -17,7 +19,8 @@ namespace MultiShopBackEndProject.Controllers
         {
             _context = context;
         }
-        public async Task<IActionResult> Index(int? categoryId,string sorting)
+
+        public async Task<IActionResult> Index(int? categoryId,string sorting,int page = 1)
         {
 
             List<Clothe> clothes = new List<Clothe>();
@@ -36,7 +39,7 @@ namespace MultiShopBackEndProject.Controllers
                     clothes = await _context.Clothes
                     .Include(c => c.ClotheImages)
                     .Where(c => c.CategoryId == categoryId)
-                    .OrderByDescending(c => c.Id)
+                    .OrderByDescending(c => c.Id).Skip((page-1)*4).Take(5)
                     .ToListAsync();
                 }
             }
@@ -54,6 +57,9 @@ namespace MultiShopBackEndProject.Controllers
                     break;
                 case "ascending":
                     clothe = _context.Clothes.Include(x => x.ClotheImages).OrderBy(clothe => clothe.Name).ToList();
+                    break;
+                case "price":
+                    clothe = _context.Clothes.Include(x => x.ClotheImages).OrderByDescending(clothe => clothe.Price).ToList();
                     break;
                 default:
                     clothe = _context.Clothes.Include(x => x.ClotheImages).ToList();

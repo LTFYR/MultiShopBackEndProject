@@ -1,7 +1,26 @@
-﻿
+﻿@model List<Contact>
 @{
     ViewData["Title"] = "Index";
 }
+    <div class="w-100">
+        @foreach (Contact item in Model)
+    {
+<ul style="list-style:none; margin-bottom:10px; height:100px; border:1px solid red" class="w-100 text-center p-0">
 
-<h1>Index</h1>
+        <li  style="background-color:crimson; color:white" class="w-100">
+           Name: @item.Name
+        </li>
+        <li >
+           Email:  @item.Email
+        </li>
+        <li>
+           Subject:  @item.Subject
+        </li>
+        <li>
+           Message:  @item.Message
+        </li>
+</ul>
+
+    }
+    </div>
 
